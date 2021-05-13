@@ -1,13 +1,21 @@
 :root {
 	--clr-neutral-dark: #202020;
 	--clr-neutral-light: #dadada;
-	--clr-white: #fff;
+	--clr-white-high: #fff;
+	--clr-white: #f0f0f0;
+	--clr-white-low: #f0f0f0;
+	--clr-blue-high: #e0fffd;
 	--clr-blue: #c5fffb;
+	--clr-blue-low: #c6ebe9;
+	--clr-orange-high: #ffc194;
 	--clr-orange: #ffb178;
+	--clr-orange-low: #efa36c;
+	--clr-red-high: #e67979;
 	--clr-red: #e26868;
+	--clr-red-low: #d57676;
 	--border-radius: 10px;
 	--ff: "VT323", monospace;
-	--b-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+	--b-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 *,
@@ -59,6 +67,14 @@ body {
 	background-color: var(--clr-white);
 	box-shadow: var(--b-shadow);
 	cursor: pointer;
+}
+
+.button:hover {
+	background-color: var(--clr-white-high);
+}
+.button:active {
+	background-color: var(--clr-white-low);
+	box-shadow: inset var(--b-shadow);
 }
 
 #button-0 {
@@ -132,16 +148,40 @@ body {
 	background-color: var(--clr-blue);
 }
 
+.blue-button:hover {
+	background-color: var(--clr-blue-high);
+}
+
+.blue-button:active {
+	background-color: var(--clr-blue-low);
+}
+
 .orange-button {
 	font-size: 3rem;
 	background-color: var(--clr-orange);
 	color: var(--clr-white);
 }
 
+.orange-button:hover {
+	background-color: var(--clr-orange-high);
+}
+
+.orange-button:active {
+	background-color: var(--clr-orange-low);
+}
+
 .red-button {
 	font-size: 2rem;
 	background-color: var(--clr-red);
 	color: var(--clr-white);
+}
+
+.red-button:hover {
+	background-color: var(--clr-red-high);
+}
+
+.red-button:active {
+	background-color: var(--clr-red-low);
 }
 
 .display {
