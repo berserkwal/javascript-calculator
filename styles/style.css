@@ -47,5 +47,33 @@ body {
 		" seven eight nine clear mul sub "
 		" four five six dec divd equals"
 		" one two three zero add equals ";
+}
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.5rem;
+	padding: 12px 20px;
+	text-align: center;
 	background-color: var(--clr-white);
+	box-shadow: var(--b-shadow);
+	cursor: pointer;
+}
+
+.blue-button {
+	font-size: 2rem;
+	background-color: var(--clr-blue);
+}
+
+.orange-button {
+	font-size: 3rem;
+	background-color: var(--clr-orange);
+	color: var(--clr-white);
+}
+
+.red-button {
+	font-size: 2rem;
+	background-color: var(--clr-red);
+	color: var(--clr-white);
 }
