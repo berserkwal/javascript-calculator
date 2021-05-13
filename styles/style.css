@@ -61,6 +61,72 @@ body {
 	cursor: pointer;
 }
 
+#button-0 {
+	grid-area: 0;
+}
+
+#button-1 {
+	border-radius: 0 0 0 var(--border-radius);
+	grid-area: one;
+}
+
+#button-2 {
+	grid-area: two;
+}
+
+#button-3 {
+	grid-area: three;
+}
+
+#button-4 {
+	grid-area: four;
+}
+
+#button-5 {
+	grid-area: five;
+}
+
+#button-6 {
+	grid-area: six;
+}
+
+#button-7 {
+	grid-area: seven;
+}
+
+#button-8 {
+	grid-area: eight;
+}
+
+#button-9 {
+	grid-area: nine;
+}
+
+#button-sub {
+	grid-area: sub;
+}
+
+#button-div {
+	grid-area: divd;
+}
+
+#button-mul {
+	grid-area: mul;
+}
+
+#button-add {
+	grid-area: add;
+}
+
+#button-clear {
+	grid-area: clear;
+}
+
+#button-equals {
+	grid-area: equals;
+	border-radius: 0 0 var(--border-radius) 0;
+}
+
 .blue-button {
 	font-size: 2rem;
 	background-color: var(--clr-blue);
