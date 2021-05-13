@@ -1,0 +1,19 @@
+:root {
+	--clr-neutral-dark: #202020;
+	--clr-neutral-light: #dadada;
+	--clr-white: #fff;
+	--clr-blue: #c5fffb;
+	--clr-orange: #ffb178;
+	--clr-red: #e26868;
+	--border-radius: 10px;
+	--ff: "VT323", monospace;
+	--b-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
