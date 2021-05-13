@@ -143,3 +143,16 @@ body {
 	background-color: var(--clr-red);
 	color: var(--clr-white);
 }
+
+.display {
+	background-color: var(--clr-neutral-dark);
+	border-radius: var(--border-radius) var(--border-radius) 0 0;
+	box-shadow: inset var(--b-shadow);
+	height: 100px;
+	color: var(--clr-neutral-light);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 1rem;
+}
