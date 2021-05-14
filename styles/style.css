@@ -67,7 +67,7 @@ body {
 	text-align: center;
 	background-color: var(--clr-white);
 	box-shadow: var(--b-shadow);
-	cursor: pointer;
+	user-select: none;
 }
 
 .button:hover {
@@ -214,9 +214,19 @@ hr {
 	color: var(--clr-blue);
 	text-align: right;
 	vertical-align: text-top;
+	text-transform: uppercase;
 }
 
 .current {
 	text-align: right;
 	font-size: 3rem;
+	text-transform: uppercase;
+}
+
+.over-limit {
+	color: var(--clr-red);
+}
+
+.total {
+	color: var(--clr-orange);
 }
