@@ -22,6 +22,9 @@ const currentDisplay = document.querySelector(".current");
 const equationDisplay = document.querySelector(".equation");
 const totalDisplay = document.querySelector(".total");
 
+let viewportHeight = window.innerHeight * 0.01;
+document.documentElement.style.setProperty("--vh", `${viewportHeight}px`);
+
 let equation = [];
 const operatorCheck = ["+", "-", "*", "/"];
 let solution = 0;
@@ -288,6 +291,11 @@ window.addEventListener("keydown", (e) => {
 			backspace();
 			break;
 	}
+});
+
+window.addEventListener("resize", () => {
+	viewportHeight = window.innerHeight * 0.01;
+	document.documentElement.style.setProperty("--vh", `${viewportHeight}px`);
 });
 
 numberZero.addEventListener("click", () => pressedNumber(0));
