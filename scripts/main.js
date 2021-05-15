@@ -21,36 +21,24 @@ const currentDisplay = document.querySelector(".current");
 const equationDisplay = document.querySelector(".equation");
 const totalDisplay = document.querySelector(".total");
 
-const equationArray = [];
-let leftoverOperation = "Nope";
+let equation = [];
+const operatorCheck = ["+", "-", "*", "/"];
+let solution = 0;
+let addedDecimal = false;
 let totalled = false;
 
-function add(num1, num2) {
-	console.log(equationArray);
-	equationArray.shift();
-	equationArray[0] = num1 + num2;
-	console.log(equationArray);
-	return;
-}
-
-function subtract(num1, num2) {
-	console.log(equationArray);
-	equationArray.shift();
-	equationArray[0] = num1 - num2;
-	console.log(equationArray);
-	return;
-}
-
-function pressedOne() {
+function pressedZero() {
 	if (totalled) {
-		currentDisplay.innerText = 0;
-		equationDisplay.innerText = 0;
-		totalled = false;
+		clear();
 	}
 	{
 		if (currentDisplay.innerHTML.length <= 9) {
-			if (currentDisplay.innerText == 0) currentDisplay.innerText = 1;
-			else currentDisplay.innerText += 1;
+			if (
+				currentDisplay.innerText === "0" ||
+				operatorCheck.includes(currentDisplay.innerText)
+			) {
+				currentDisplay.innerText = 0;
+			} else currentDisplay.innerText += 0;
 		} else {
 			currentDisplay.innerText = "Over Digital Limit";
 			currentDisplay.classList.add("over-limit");
@@ -61,16 +49,68 @@ function pressedOne() {
 		}
 	}
 }
-function pressedTwo() {
+
+function pressedOne() {
 	if (totalled) {
-		currentDisplay.innerText = 0;
-		equationDisplay.innerText = 0;
-		totalled = false;
+		clear();
 	}
 	{
 		if (currentDisplay.innerHTML.length <= 9) {
-			if (currentDisplay.innerText == 0) currentDisplay.innerText = 2;
-			else currentDisplay.innerText += 2;
+			if (
+				currentDisplay.innerText === "0" ||
+				operatorCheck.includes(currentDisplay.innerText)
+			) {
+				currentDisplay.innerText = 1;
+			} else currentDisplay.innerText += 1;
+		} else {
+			currentDisplay.innerText = "Over Digital Limit";
+			currentDisplay.classList.add("over-limit");
+			setTimeout(() => {
+				currentDisplay.innerText = 0;
+				currentDisplay.classList.remove("over-limit");
+			}, 1500);
+		}
+	}
+}
+
+function pressedTwo() {
+	if (totalled) {
+		clear();
+	}
+	{
+		if (currentDisplay.innerHTML.length <= 9) {
+			if (
+				currentDisplay.innerText === "0" ||
+				operatorCheck.includes(currentDisplay.innerText)
+			) {
+				currentDisplay.innerText = 2;
+			} else currentDisplay.innerText += 2;
+		} else {
+			currentDisplay.innerText = "Over Digital Limit";
+			currentDisplay.classList.add("over-limit");
+			setTimeout(() => {
+				currentDisplay.innerText = 0;
+				currentDisplay.classList.remove("over-limit");
+			}, 1500);
+		}
+	}
+}
+
+function pressedDecimal() {
+	if (totalled) {
+		clear();
+	}
+	{
+		if (currentDisplay.innerHTML.length <= 9) {
+			if (
+				currentDisplay.innerText === "0" ||
+				operatorCheck.includes(currentDisplay.innerText)
+			) {
+				currentDisplay.innerText = "0.";
+			} else if (addedDecimal)
+				currentDisplay.innerText = currentDisplay.innerText;
+			else currentDisplay.innerText += ".";
+			addedDecimal = true;
 		} else {
 			currentDisplay.innerText = "Over Digital Limit";
 			currentDisplay.classList.add("over-limit");
@@ -86,113 +126,92 @@ function clear() {
 	currentDisplay.innerText = 0;
 	currentDisplay.classList.remove("total");
 	equationDisplay.innerText = 0;
+	equation.splice(0, equation.length);
+	totalled = false;
+	addedDecimal = false;
+	// solution = 0;
 }
 
 function pressedAdd() {
 	if (totalled) {
-		equationDisplay.innerText = 0;
-		totalled = false;
-		currentDisplay.classList.remove("total");
+		clear();
+		equation.push(solution);
+		equation.push("+");
 	}
-	if (!Number.isNaN(parseFloat(currentDisplay.innerText))) {
-		if (
-			!(currentDisplay.innerText === "0" && equationDisplay.innerText === "0")
-		) {
-			if (currentDisplay.innerText !== "0") {
-				if (equationDisplay.innerText === "0")
-					equationDisplay.innerText =
-						parseFloat(currentDisplay.innerText) + "+";
-				else {
-					equationDisplay.innerText +=
-						parseFloat(currentDisplay.innerText) + "+";
-				}
-				equationArray.push(parseFloat(currentDisplay.innerText));
-				currentDisplay.innerText = 0;
-				if (equationArray.length > 2) {
-					leftoverFinisher();
-				}
-				leftoverOperation = "+";
-			}
-		}
+	equationDisplay.innerText = "0";
+	if (currentDisplay.innerText !== "0") {
+		equation.push(currentDisplay.innerText);
+		equation.push("+");
+		currentDisplay.innerText = "+";
 	}
+	equationDisplay.innerText = equation.join("");
+	addedDecimal = false;
 }
 
 function pressedSubtract() {
 	if (totalled) {
-		equationDisplay.innerText = 0;
-		totalled = false;
-		currentDisplay.classList.remove("total");
+		clear();
+		equation.push(solution);
+		equation.push("-");
 	}
-	if (!Number.isNaN(parseFloat(currentDisplay.innerText))) {
-		if (
-			!(currentDisplay.innerText === "0" && equationDisplay.innerText === "0")
-		) {
-			if (currentDisplay.innerText !== "0") {
-				if (equationDisplay.innerText === "0")
-					equationDisplay.innerText =
-						parseFloat(currentDisplay.innerText) + "-";
-				else {
-					equationDisplay.innerText +=
-						parseFloat(currentDisplay.innerText) + "-";
-				}
-				equationArray.push(parseFloat(currentDisplay.innerText));
-				currentDisplay.innerText = 0;
-				if (equationArray.length > 2) {
-					leftoverFinisher();
-				}
-				leftoverOperation = "-";
-			}
-		}
+	equationDisplay.innerText = "0";
+	if (currentDisplay.innerText !== "0") {
+		equation.push(currentDisplay.innerText);
+		equation.push("-");
+		currentDisplay.innerText = "-";
 	}
+	equationDisplay.innerText = equation.join("");
+	addedDecimal = false;
+}
+
+function pressedMultiply() {
+	if (totalled) {
+		clear();
+		equation.push(solution);
+		equation.push("*");
+	}
+	equationDisplay.innerText = "0";
+	if (!operatorCheck.includes(currentDisplay.innerText)) {
+		equation.push(currentDisplay.innerText);
+		equation.push("*");
+		currentDisplay.innerText = "*";
+	}
+	equationDisplay.innerText = equation.join("");
+	addedDecimal = false;
+}
+
+function pressedDivide() {
+	if (totalled) {
+		clear();
+		equation.push(solution);
+		equation.push("/");
+	}
+	equationDisplay.innerText = "0";
+	if (!operatorCheck.includes(currentDisplay.innerText)) {
+		equation.push(currentDisplay.innerText);
+		equation.push("/");
+		currentDisplay.innerText = "/";
+	}
+	equationDisplay.innerText = equation.join("");
+	addedDecimal = false;
 }
 
 function equals() {
-	if (!totalled) {
-		if (currentDisplay.innerText !== "0") {
-			if (equationDisplay.innerText === "0") {
-				equationDisplay.innerText = currentDisplay.innerText;
-			} else equationDisplay.innerText += currentDisplay.innerText;
-			equationArray.push(parseFloat(currentDisplay.innerText));
-			if (equationArray.length > 2) leftoverFinisher();
-			console.log(equationArray);
-		}
-		leftoverFinisher();
-		leftoverOperation = "Nope";
-		console.log(equationArray[0]);
-		if (currentDisplay.innerText === "0") {
-			let temp = equationDisplay.innerText;
-			equationDisplay.innerText = temp.slice(0, temp.length - 1);
-		}
-		currentDisplay.innerText = equationArray[0];
-		currentDisplay.classList.add("total");
-		equationDisplay.innerText += "=" + equationArray[0];
+	if (!operatorCheck.includes(currentDisplay.innerText)) {
+		equation.push(currentDisplay.innerText);
 	}
+	if (equation.length % 2 === 0) equation.pop();
+	let equationString = equation.join("");
+	console.log(equationString);
+	solution = parseFloat(eval(equationString).toFixed(9));
+	currentDisplay.innerText = solution;
 	totalled = true;
-	equationArray.shift();
+	currentDisplay.classList.add("total");
+	equationDisplay.innerText = equationString + "=" + solution;
 }
-
-function leftoverFinisher() {
-	switch (leftoverOperation) {
-		case "+":
-			add(equationArray[0], equationArray[1]);
-			break;
-		case "-":
-			subtract(equationArray[0], equationArray[1]);
-			break;
-		case "*":
-			multiply(equationArray[0], equationArray[1]);
-			break;
-		case "/":
-			divide(equationArray[0], equationArray[1]);
-			break;
-	}
-}
-
-numberOne.addEventListener("click", pressedOne);
-numberTwo.addEventListener("click", pressedTwo);
 
 window.addEventListener("keydown", (e) => {
-	console.log(e.key);
+	// console.log(e.key);
 	switch (e.key) {
 		case "1":
 			pressedOne();
@@ -200,7 +219,34 @@ window.addEventListener("keydown", (e) => {
 		case "2":
 			pressedTwo();
 			break;
-		case "Backspace":
+		case "3":
+			pressedThree();
+			break;
+		case "4":
+			pressedFour();
+			break;
+		case "5":
+			pressedFive();
+			break;
+		case "6":
+			pressedSix();
+			break;
+		case "7":
+			pressedSeven();
+			break;
+		case "8":
+			pressedEight();
+			break;
+		case "9":
+			pressedNine();
+			break;
+		case "0":
+			pressedZero();
+			break;
+		case ".":
+			pressedDecimal();
+			break;
+		case "Delete":
 		case "c":
 		case "C":
 			clear();
@@ -210,15 +256,38 @@ window.addEventListener("keydown", (e) => {
 		case "a":
 			pressedAdd();
 			break;
+		case "-":
+		case "S":
+		case "s":
+			pressedSubtract();
+			break;
+		case "*":
+		case "M":
+		case "m":
+			pressedMultiply();
+			break;
+		case "/":
+		case "D":
+		case "d":
+			pressedDivide();
+			break;
 		case "=":
 		case "Enter":
 			equals();
 			break;
+		case "Backspace":
+			backspace();
+			break;
 	}
 });
 
+numberOne.addEventListener("click", pressedOne);
+numberTwo.addEventListener("click", pressedTwo);
+
 addKey.addEventListener("click", pressedAdd);
 subtractKey.addEventListener("click", pressedSubtract);
+multiplyKey.addEventListener("click", pressedMultiply);
+divideKey.addEventListener("click", pressedDivide);
 
 clearKey.addEventListener("click", clear);
 
