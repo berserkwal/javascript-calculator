@@ -28,7 +28,7 @@ let solution = 0;
 let addedDecimal = false;
 let totalled = false;
 
-function pressedZero() {
+function pressedNumber(num) {
 	if (totalled) {
 		clear();
 	}
@@ -38,209 +38,8 @@ function pressedZero() {
 				currentDisplay.innerText === "0" ||
 				operatorCheck.includes(currentDisplay.innerText)
 			) {
-				currentDisplay.innerText = 0;
-			} else currentDisplay.innerText += 0;
-		} else {
-			currentDisplay.innerText = "Over Digital Limit";
-			currentDisplay.classList.add("over-limit");
-			setTimeout(() => {
-				currentDisplay.innerText = 0;
-				currentDisplay.classList.remove("over-limit");
-			}, 1500);
-		}
-	}
-}
-
-function pressedOne() {
-	if (totalled) {
-		clear();
-	}
-	{
-		if (currentDisplay.innerHTML.length <= 9) {
-			if (
-				currentDisplay.innerText === "0" ||
-				operatorCheck.includes(currentDisplay.innerText)
-			) {
-				currentDisplay.innerText = 1;
-			} else currentDisplay.innerText += 1;
-		} else {
-			currentDisplay.innerText = "Over Digital Limit";
-			currentDisplay.classList.add("over-limit");
-			setTimeout(() => {
-				currentDisplay.innerText = 0;
-				currentDisplay.classList.remove("over-limit");
-			}, 1500);
-		}
-	}
-}
-
-function pressedTwo() {
-	if (totalled) {
-		clear();
-	}
-	{
-		if (currentDisplay.innerHTML.length <= 9) {
-			if (
-				currentDisplay.innerText === "0" ||
-				operatorCheck.includes(currentDisplay.innerText)
-			) {
-				currentDisplay.innerText = 2;
-			} else currentDisplay.innerText += 2;
-		} else {
-			currentDisplay.innerText = "Over Digital Limit";
-			currentDisplay.classList.add("over-limit");
-			setTimeout(() => {
-				currentDisplay.innerText = 0;
-				currentDisplay.classList.remove("over-limit");
-			}, 1500);
-		}
-	}
-}
-
-function pressedThree() {
-	if (totalled) {
-		clear();
-	}
-	{
-		if (currentDisplay.innerHTML.length <= 9) {
-			if (
-				currentDisplay.innerText === "0" ||
-				operatorCheck.includes(currentDisplay.innerText)
-			) {
-				currentDisplay.innerText = 3;
-			} else currentDisplay.innerText += 3;
-		} else {
-			currentDisplay.innerText = "Over Digital Limit";
-			currentDisplay.classList.add("over-limit");
-			setTimeout(() => {
-				currentDisplay.innerText = 0;
-				currentDisplay.classList.remove("over-limit");
-			}, 1500);
-		}
-	}
-}
-function pressedFour() {
-	if (totalled) {
-		clear();
-	}
-	{
-		if (currentDisplay.innerHTML.length <= 9) {
-			if (
-				currentDisplay.innerText === "0" ||
-				operatorCheck.includes(currentDisplay.innerText)
-			) {
-				currentDisplay.innerText = 4;
-			} else currentDisplay.innerText += 4;
-		} else {
-			currentDisplay.innerText = "Over Digital Limit";
-			currentDisplay.classList.add("over-limit");
-			setTimeout(() => {
-				currentDisplay.innerText = 0;
-				currentDisplay.classList.remove("over-limit");
-			}, 1500);
-		}
-	}
-}
-function pressedFive() {
-	if (totalled) {
-		clear();
-	}
-	{
-		if (currentDisplay.innerHTML.length <= 9) {
-			if (
-				currentDisplay.innerText === "0" ||
-				operatorCheck.includes(currentDisplay.innerText)
-			) {
-				currentDisplay.innerText = 5;
-			} else currentDisplay.innerText += 5;
-		} else {
-			currentDisplay.innerText = "Over Digital Limit";
-			currentDisplay.classList.add("over-limit");
-			setTimeout(() => {
-				currentDisplay.innerText = 0;
-				currentDisplay.classList.remove("over-limit");
-			}, 1500);
-		}
-	}
-}
-function pressedSix() {
-	if (totalled) {
-		clear();
-	}
-	{
-		if (currentDisplay.innerHTML.length <= 9) {
-			if (
-				currentDisplay.innerText === "0" ||
-				operatorCheck.includes(currentDisplay.innerText)
-			) {
-				currentDisplay.innerText = 6;
-			} else currentDisplay.innerText += 6;
-		} else {
-			currentDisplay.innerText = "Over Digital Limit";
-			currentDisplay.classList.add("over-limit");
-			setTimeout(() => {
-				currentDisplay.innerText = 0;
-				currentDisplay.classList.remove("over-limit");
-			}, 1500);
-		}
-	}
-}
-function pressedSeven() {
-	if (totalled) {
-		clear();
-	}
-	{
-		if (currentDisplay.innerHTML.length <= 9) {
-			if (
-				currentDisplay.innerText === "0" ||
-				operatorCheck.includes(currentDisplay.innerText)
-			) {
-				currentDisplay.innerText = 7;
-			} else currentDisplay.innerText += 7;
-		} else {
-			currentDisplay.innerText = "Over Digital Limit";
-			currentDisplay.classList.add("over-limit");
-			setTimeout(() => {
-				currentDisplay.innerText = 0;
-				currentDisplay.classList.remove("over-limit");
-			}, 1500);
-		}
-	}
-}
-function pressedEight() {
-	if (totalled) {
-		clear();
-	}
-	{
-		if (currentDisplay.innerHTML.length <= 9) {
-			if (
-				currentDisplay.innerText === "0" ||
-				operatorCheck.includes(currentDisplay.innerText)
-			) {
-				currentDisplay.innerText = 8;
-			} else currentDisplay.innerText += 8;
-		} else {
-			currentDisplay.innerText = "Over Digital Limit";
-			currentDisplay.classList.add("over-limit");
-			setTimeout(() => {
-				currentDisplay.innerText = 0;
-				currentDisplay.classList.remove("over-limit");
-			}, 1500);
-		}
-	}
-}
-function pressedNine() {
-	if (totalled) {
-		clear();
-	}
-	{
-		if (currentDisplay.innerHTML.length <= 9) {
-			if (
-				currentDisplay.innerText === "0" ||
-				operatorCheck.includes(currentDisplay.innerText)
-			) {
-				currentDisplay.innerText = 9;
-			} else currentDisplay.innerText += 9;
+				currentDisplay.innerText = num;
+			} else currentDisplay.innerText += num;
 		} else {
 			currentDisplay.innerText = "Over Digital Limit";
 			currentDisplay.classList.add("over-limit");
@@ -437,16 +236,16 @@ window.addEventListener("keydown", (e) => {
 	}
 });
 
-numberZero.addEventListener("click", pressedZero);
-numberOne.addEventListener("click", pressedOne);
-numberTwo.addEventListener("click", pressedTwo);
-numberThree.addEventListener("click", pressedThree);
-numberFour.addEventListener("click", pressedFour);
-numberFive.addEventListener("click", pressedFive);
-numberSix.addEventListener("click", pressedSix);
-numberSeven.addEventListener("click", pressedSeven);
-numberEight.addEventListener("click", pressedEight);
-numberNine.addEventListener("click", pressedNine);
+numberZero.addEventListener("click", () => pressedNumber(0));
+numberOne.addEventListener("click", () => pressedNumber(1));
+numberTwo.addEventListener("click", () => pressedNumber(2));
+numberThree.addEventListener("click", () => pressedNumber(3));
+numberFour.addEventListener("click", () => pressedNumber(4));
+numberFive.addEventListener("click", () => pressedNumber(5));
+numberSix.addEventListener("click", () => pressedNumber(6));
+numberSeven.addEventListener("click", () => pressedNumber(7));
+numberEight.addEventListener("click", () => pressedNumber(8));
+numberNine.addEventListener("click", () => pressedNumber(9));
 decimalKey.addEventListener("click", pressedDecimal);
 
 addKey.addEventListener("click", pressedAdd);
