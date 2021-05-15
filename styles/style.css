@@ -37,7 +37,7 @@ body {
 
 .calc-frame {
 	margin-top: 5rem;
-	padding: 2rem;
+	padding: 1.5rem;
 	background-color: var(--clr-neutral-light);
 	/* height: 100px;
 	width: 100px; */
@@ -51,11 +51,14 @@ body {
 .buttons {
 	display: grid;
 	gap: 1rem;
-	grid-template: repeat(3, 1fr) / repeat(6, 1fr);
+	width: 100%;
+	max-width: 360px;
+	grid-template: repeat(4, 1fr) / repeat(5, 1fr);
 	grid-template-areas:
-		" seven eight nine clear mul sub "
-		" four five six dec divd equals"
-		" one two three zero add equals ";
+		" seven eight nine clear clear "
+		" four five six divd equals "
+		" one two three mul equals "
+		" dec zero add sub equals";
 }
 
 .button {
@@ -78,12 +81,15 @@ body {
 	box-shadow: inset var(--b-shadow);
 }
 
+#button-decimal {
+	border-radius: 0 0 0 var(--border-radius);
+	grid-area: dec;
+}
 #button-0 {
 	grid-area: zero;
 }
 
 #button-1 {
-	border-radius: 0 0 0 var(--border-radius);
 	grid-area: one;
 }
 
@@ -190,7 +196,7 @@ body {
 	border-radius: var(--border-radius) var(--border-radius) 0 0;
 	box-shadow: inset var(--b-shadow);
 	width: 100%;
-	max-width: 450px;
+	max-width: 360px;
 	min-height: 100px;
 	word-wrap: break-word;
 	color: var(--clr-neutral-light);
@@ -259,12 +265,6 @@ footer a:hover {
 	}
 	.buttons {
 		gap: 0.5rem;
-		grid-template: repeat(4, 1fr) / repeat(5, 1fr);
-		grid-template-areas:
-			" seven eight nine mul sub "
-			" four five six divd equals "
-			" one two three add equals "
-			" dec zero clear clear equals";
 	}
 	.over-limit {
 		font-size: 2.5rem;
