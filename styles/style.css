@@ -230,3 +230,23 @@ hr {
 .total {
 	color: var(--clr-orange);
 }
+
+footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	padding: 10px;
+	background-color: var(--clr-neutral-light);
+	font-size: 1.2rem;
+	color: var(--clr-neutral-dark);
+}
+
+footer a {
+	color: var(--clr-red);
+	text-decoration: none;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
