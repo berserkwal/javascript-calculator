@@ -161,7 +161,11 @@ function pressedMultiply() {
 	}
 	equationDisplay.innerText = "0";
 	const value = currentDisplay.innerText;
-	if (hasOperator && equation[equation.length - 1] !== "*") {
+	if (
+		hasOperator &&
+		equation[equation.length - 1] !== "*" &&
+		equation.length > 1
+	) {
 		equation.pop();
 		equation.push("*");
 	} else if (!operatorCheck.includes(value)) {
@@ -170,6 +174,7 @@ function pressedMultiply() {
 	}
 	currentDisplay.innerText = "*";
 	equationDisplay.innerText = equation.join("");
+	if (equationDisplay.innerText.length === 0) equationDisplay.innerText = 0;
 	hasDecimal = false;
 	if (equation.length % 2 === 0) hasOperator = true;
 }
@@ -183,7 +188,11 @@ function pressedDivide() {
 	}
 	equationDisplay.innerText = "0";
 	const value = currentDisplay.innerText;
-	if (hasOperator && equation[equation.length - 1] !== "/") {
+	if (
+		hasOperator &&
+		equation[equation.length - 1] !== "/" &&
+		equation.length > 1
+	) {
 		equation.pop();
 		equation.push("/");
 	} else if (!operatorCheck.includes(value)) {
@@ -192,6 +201,7 @@ function pressedDivide() {
 	}
 	currentDisplay.innerText = "/";
 	equationDisplay.innerText = equation.join("");
+	if (equationDisplay.innerText.length === 0) equationDisplay.innerText = 0;
 	hasDecimal = false;
 	if (equation.length % 2 === 0) hasOperator = true;
 }
