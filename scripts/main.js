@@ -93,21 +93,21 @@ function pressedAdd() {
 	if (isTotal) {
 		clear();
 		equation.push(solution);
-		equation.push(" + ");
-		currentDisplay.innerText = " + ";
+		equation.push("+");
+		currentDisplay.innerText = "+";
 	}
 	equationDisplay.innerText = "0";
 	const value = currentDisplay.innerText;
 	if (value !== "0") {
-		if (hasOperator && equation[equation.length - 1] !== " + ") {
+		if (hasOperator && equation[equation.length - 1] !== "+") {
 			equation.pop();
-			equation.push(" + ");
+			equation.push("+");
 		} else if (!operatorCheck.includes(value)) {
 			equation.push(value);
-			equation.push(" + ");
+			equation.push("+");
 		}
 	}
-	currentDisplay.innerText = " + ";
+	currentDisplay.innerText = "+";
 	equationDisplay.innerText = equation.join("");
 	if (equationDisplay.innerText.length === 0) equationDisplay.innerText = 0;
 
@@ -119,21 +119,21 @@ function pressedSubtract() {
 	if (isTotal) {
 		clear();
 		equation.push(solution);
-		equation.push(" - ");
-		currentDisplay.innerText = " - ";
+		equation.push("-");
+		currentDisplay.innerText = "-";
 	}
 	equationDisplay.innerText = "0";
 	const value = currentDisplay.innerText;
 	if (value !== "0") {
-		if (hasOperator && equation[equation.length - 1] !== " - ") {
+		if (hasOperator && equation[equation.length - 1] !== "-") {
 			equation.pop();
-			equation.push(" - ");
+			equation.push("-");
 		} else if (!operatorCheck.includes(value)) {
 			equation.push(value);
-			equation.push(" - ");
+			equation.push("-");
 		}
 	}
-	currentDisplay.innerText = " - ";
+	currentDisplay.innerText = "-";
 	equationDisplay.innerText = equation.join("");
 	if (equationDisplay.innerText.length === 0) equationDisplay.innerText = 0;
 
@@ -145,19 +145,19 @@ function pressedMultiply() {
 	if (isTotal) {
 		clear();
 		equation.push(solution);
-		equation.push(" * ");
-		currentDisplay.innerText = " * ";
+		equation.push("*");
+		currentDisplay.innerText = "*";
 	}
 	equationDisplay.innerText = "0";
 	const value = currentDisplay.innerText;
-	if (hasOperator && equation[equation.length - 1] !== " * ") {
+	if (hasOperator && equation[equation.length - 1] !== "*") {
 		equation.pop();
-		equation.push(" * ");
+		equation.push("*");
 	} else if (!operatorCheck.includes(value)) {
 		equation.push(value);
-		equation.push(" * ");
+		equation.push("*");
 	}
-	currentDisplay.innerText = " * ";
+	currentDisplay.innerText = "*";
 	equationDisplay.innerText = equation.join("");
 	hasDecimal = false;
 	hasOperator = true;
@@ -167,19 +167,19 @@ function pressedDivide() {
 	if (isTotal) {
 		clear();
 		equation.push(solution);
-		equation.push(" / ");
-		currentDisplay.innerText = " / ";
+		equation.push("/");
+		currentDisplay.innerText = "/";
 	}
 	equationDisplay.innerText = "0";
 	const value = currentDisplay.innerText;
-	if (hasOperator && equation[equation.length - 1] !== " / ") {
+	if (hasOperator && equation[equation.length - 1] !== "/") {
 		equation.pop();
-		equation.push(" / ");
+		equation.push("/");
 	} else if (!operatorCheck.includes(value)) {
 		equation.push(value);
-		equation.push(" / ");
+		equation.push("/");
 	}
-	currentDisplay.innerText = " / ";
+	currentDisplay.innerText = "/";
 	equationDisplay.innerText = equation.join("");
 	hasDecimal = false;
 	hasOperator = true;
