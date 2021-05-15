@@ -27,7 +27,7 @@
 }
 
 body {
-	width: auto;
+	width: 100vw;
 	height: 100%;
 	background-color: var(--clr-neutral-dark);
 	display: grid;
@@ -249,4 +249,20 @@ footer a {
 
 footer a:hover {
 	text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+	.calc-frame {
+		padding: 1rem;
+		gap: 1rem;
+	}
+	.buttons {
+		gap: 0.5rem;
+		grid-template: repeat(4, 1fr) / repeat(5, 1fr);
+		grid-template-areas:
+			" seven eight nine mul sub "
+			" four five six divd equals "
+			" one two three add equals "
+			" dec zero clear clear equals";
+	}
 }
