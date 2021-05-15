@@ -99,7 +99,11 @@ function pressedAdd() {
 	equationDisplay.innerText = "0";
 	const value = currentDisplay.innerText;
 	if (value !== "0") {
-		if (hasOperator && equation[equation.length - 1] !== "+") {
+		if (
+			hasOperator &&
+			equation.length > 1 &&
+			equation[equation.length - 1] !== "+"
+		) {
 			equation.pop();
 			equation.push("+");
 		} else if (!operatorCheck.includes(value)) {
@@ -112,7 +116,7 @@ function pressedAdd() {
 	if (equationDisplay.innerText.length === 0) equationDisplay.innerText = 0;
 
 	hasDecimal = false;
-	hasOperator = true;
+	if (equation.length % 2 === 0) hasOperator = true;
 }
 
 function pressedSubtract() {
@@ -125,7 +129,11 @@ function pressedSubtract() {
 	equationDisplay.innerText = "0";
 	const value = currentDisplay.innerText;
 	if (value !== "0") {
-		if (hasOperator && equation[equation.length - 1] !== "-") {
+		if (
+			hasOperator &&
+			equation.length > 1 &&
+			equation[equation.length - 1] !== "-"
+		) {
 			equation.pop();
 			equation.push("-");
 		} else if (!operatorCheck.includes(value)) {
@@ -138,7 +146,7 @@ function pressedSubtract() {
 	if (equationDisplay.innerText.length === 0) equationDisplay.innerText = 0;
 
 	hasDecimal = false;
-	hasOperator = true;
+	if (equation.length % 2 === 0) hasOperator = true;
 }
 
 function pressedMultiply() {
@@ -160,7 +168,7 @@ function pressedMultiply() {
 	currentDisplay.innerText = "*";
 	equationDisplay.innerText = equation.join("");
 	hasDecimal = false;
-	hasOperator = true;
+	if (equation.length % 2 === 0) hasOperator = true;
 }
 
 function pressedDivide() {
@@ -182,7 +190,7 @@ function pressedDivide() {
 	currentDisplay.innerText = "/";
 	equationDisplay.innerText = equation.join("");
 	hasDecimal = false;
-	hasOperator = true;
+	if (equation.length % 2 === 0) hasOperator = true;
 }
 
 function equals() {
@@ -199,6 +207,16 @@ function equals() {
 	isTotal = true;
 	currentDisplay.classList.add("total");
 	equationDisplay.innerText = equationString + " =";
+}
+
+function backspace() {
+	if (currentDisplay.innerHTML !== "0") {
+		currentDisplay.innerText = currentDisplay.innerText.slice(
+			0,
+			currentDisplay.innerText.length - 1
+		);
+	}
+	if (currentDisplay.innerText.length === 0) currentDisplay.innerText = "0";
 }
 
 window.addEventListener("keydown", (e) => {
