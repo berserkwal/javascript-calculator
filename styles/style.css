@@ -221,6 +221,7 @@ hr {
 	text-align: right;
 	font-size: 3rem;
 	text-transform: uppercase;
+	line-height: 48px;
 }
 
 .over-limit {
@@ -264,5 +265,9 @@ footer a:hover {
 			" four five six divd equals "
 			" one two three add equals "
 			" dec zero clear clear equals";
+	}
+	.over-limit {
+		font-size: 2.5rem;
+		color: var(--clr-red);
 	}
 }
