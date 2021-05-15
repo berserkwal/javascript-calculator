@@ -2,19 +2,20 @@ const numberZero = document.querySelector("#button-0");
 const numberOne = document.querySelector("#button-1");
 const numberTwo = document.querySelector("#button-2");
 const numberThree = document.querySelector("#button-3");
-const numberFour = document.querySelector("#button-3");
-const numberFive = document.querySelector("#button-4");
-const numberSix = document.querySelector("#button-5");
-const numberSeven = document.querySelector("#button-6");
-const numberEight = document.querySelector("#button-7");
-const numberNine = document.querySelector("#button-8");
-const decimalKey = document.querySelector("#button-9");
+const numberFour = document.querySelector("#button-4");
+const numberFive = document.querySelector("#button-5");
+const numberSix = document.querySelector("#button-6");
+const numberSeven = document.querySelector("#button-7");
+const numberEight = document.querySelector("#button-8");
+const numberNine = document.querySelector("#button-9");
+const decimalKey = document.querySelector("#button-decimal");
 
-const clearKey = document.querySelector("#button-clear");
 const multiplyKey = document.querySelector("#button-mul");
 const divideKey = document.querySelector("#button-div");
 const addKey = document.querySelector("#button-add");
 const subtractKey = document.querySelector("#button-sub");
+
+const clearKey = document.querySelector("#button-clear");
 const equalsKey = document.querySelector("#button-equals");
 
 const currentDisplay = document.querySelector(".current");
@@ -85,6 +86,161 @@ function pressedTwo() {
 			) {
 				currentDisplay.innerText = 2;
 			} else currentDisplay.innerText += 2;
+		} else {
+			currentDisplay.innerText = "Over Digital Limit";
+			currentDisplay.classList.add("over-limit");
+			setTimeout(() => {
+				currentDisplay.innerText = 0;
+				currentDisplay.classList.remove("over-limit");
+			}, 1500);
+		}
+	}
+}
+
+function pressedThree() {
+	if (totalled) {
+		clear();
+	}
+	{
+		if (currentDisplay.innerHTML.length <= 9) {
+			if (
+				currentDisplay.innerText === "0" ||
+				operatorCheck.includes(currentDisplay.innerText)
+			) {
+				currentDisplay.innerText = 3;
+			} else currentDisplay.innerText += 3;
+		} else {
+			currentDisplay.innerText = "Over Digital Limit";
+			currentDisplay.classList.add("over-limit");
+			setTimeout(() => {
+				currentDisplay.innerText = 0;
+				currentDisplay.classList.remove("over-limit");
+			}, 1500);
+		}
+	}
+}
+function pressedFour() {
+	if (totalled) {
+		clear();
+	}
+	{
+		if (currentDisplay.innerHTML.length <= 9) {
+			if (
+				currentDisplay.innerText === "0" ||
+				operatorCheck.includes(currentDisplay.innerText)
+			) {
+				currentDisplay.innerText = 4;
+			} else currentDisplay.innerText += 4;
+		} else {
+			currentDisplay.innerText = "Over Digital Limit";
+			currentDisplay.classList.add("over-limit");
+			setTimeout(() => {
+				currentDisplay.innerText = 0;
+				currentDisplay.classList.remove("over-limit");
+			}, 1500);
+		}
+	}
+}
+function pressedFive() {
+	if (totalled) {
+		clear();
+	}
+	{
+		if (currentDisplay.innerHTML.length <= 9) {
+			if (
+				currentDisplay.innerText === "0" ||
+				operatorCheck.includes(currentDisplay.innerText)
+			) {
+				currentDisplay.innerText = 5;
+			} else currentDisplay.innerText += 5;
+		} else {
+			currentDisplay.innerText = "Over Digital Limit";
+			currentDisplay.classList.add("over-limit");
+			setTimeout(() => {
+				currentDisplay.innerText = 0;
+				currentDisplay.classList.remove("over-limit");
+			}, 1500);
+		}
+	}
+}
+function pressedSix() {
+	if (totalled) {
+		clear();
+	}
+	{
+		if (currentDisplay.innerHTML.length <= 9) {
+			if (
+				currentDisplay.innerText === "0" ||
+				operatorCheck.includes(currentDisplay.innerText)
+			) {
+				currentDisplay.innerText = 6;
+			} else currentDisplay.innerText += 6;
+		} else {
+			currentDisplay.innerText = "Over Digital Limit";
+			currentDisplay.classList.add("over-limit");
+			setTimeout(() => {
+				currentDisplay.innerText = 0;
+				currentDisplay.classList.remove("over-limit");
+			}, 1500);
+		}
+	}
+}
+function pressedSeven() {
+	if (totalled) {
+		clear();
+	}
+	{
+		if (currentDisplay.innerHTML.length <= 9) {
+			if (
+				currentDisplay.innerText === "0" ||
+				operatorCheck.includes(currentDisplay.innerText)
+			) {
+				currentDisplay.innerText = 7;
+			} else currentDisplay.innerText += 7;
+		} else {
+			currentDisplay.innerText = "Over Digital Limit";
+			currentDisplay.classList.add("over-limit");
+			setTimeout(() => {
+				currentDisplay.innerText = 0;
+				currentDisplay.classList.remove("over-limit");
+			}, 1500);
+		}
+	}
+}
+function pressedEight() {
+	if (totalled) {
+		clear();
+	}
+	{
+		if (currentDisplay.innerHTML.length <= 9) {
+			if (
+				currentDisplay.innerText === "0" ||
+				operatorCheck.includes(currentDisplay.innerText)
+			) {
+				currentDisplay.innerText = 8;
+			} else currentDisplay.innerText += 8;
+		} else {
+			currentDisplay.innerText = "Over Digital Limit";
+			currentDisplay.classList.add("over-limit");
+			setTimeout(() => {
+				currentDisplay.innerText = 0;
+				currentDisplay.classList.remove("over-limit");
+			}, 1500);
+		}
+	}
+}
+function pressedNine() {
+	if (totalled) {
+		clear();
+	}
+	{
+		if (currentDisplay.innerHTML.length <= 9) {
+			if (
+				currentDisplay.innerText === "0" ||
+				operatorCheck.includes(currentDisplay.innerText)
+			) {
+				currentDisplay.innerText = 9;
+			} else currentDisplay.innerText += 9;
 		} else {
 			currentDisplay.innerText = "Over Digital Limit";
 			currentDisplay.classList.add("over-limit");
@@ -281,8 +437,17 @@ window.addEventListener("keydown", (e) => {
 	}
 });
 
+numberZero.addEventListener("click", pressedZero);
 numberOne.addEventListener("click", pressedOne);
 numberTwo.addEventListener("click", pressedTwo);
+numberThree.addEventListener("click", pressedThree);
+numberFour.addEventListener("click", pressedFour);
+numberFive.addEventListener("click", pressedFive);
+numberSix.addEventListener("click", pressedSix);
+numberSeven.addEventListener("click", pressedSeven);
+numberEight.addEventListener("click", pressedEight);
+numberNine.addEventListener("click", pressedNine);
+decimalKey.addEventListener("click", pressedDecimal);
 
 addKey.addEventListener("click", pressedAdd);
 subtractKey.addEventListener("click", pressedSubtract);
