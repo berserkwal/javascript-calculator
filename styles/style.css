@@ -1,20 +1,16 @@
 :root {
 	--clr-neutral-dark: #202020;
-	--clr-neutral-light: #dadada;
-	--clr-white-high: #fff;
-	--clr-white: #f0f0f0;
-	--clr-white-low: #f0f0f0;
-	--clr-blue-high: #e0fffd;
-	--clr-blue: #c5fffb;
-	--clr-blue-low: #c6ebe9;
-	--clr-orange-high: #ffc194;
-	--clr-orange: #ffb178;
-	--clr-orange-low: #efa36c;
-	--clr-red-high: #e67979;
+	--clr-neutral-light: #b4b4b4;
+	--clr-white-hover: #f0f0f0;
+	--clr-white: #ebebeb;
+	--clr-blue-hover: #6fcaff;
+	--clr-blue: #88d3ff;
+	--clr-green-hover: #a3fc79;
+	--clr-green: #b0ff8b;
+	--clr-red-hover: #eb7070;
 	--clr-red: #e26868;
-	--clr-red-low: #d57676;
 	--border-radius: 10px;
-	--ff: "VT323", monospace;
+	--ff: "Oxygen Mono", monospace;
 	--b-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -74,10 +70,10 @@ body {
 }
 
 .button:hover {
-	background-color: var(--clr-white-high);
+	background-color: var(--clr-white-hover);
 }
 .button:active {
-	background-color: var(--clr-white-low);
+	background-color: var(--clr-white);
 	box-shadow: inset var(--b-shadow);
 }
 
@@ -151,44 +147,44 @@ body {
 }
 
 .blue-button {
-	font-size: 2rem;
+	/* font-size: 2rem; */
 	background-color: var(--clr-blue);
 }
 
 .blue-button:hover {
-	background-color: var(--clr-blue-high);
+	background-color: var(--clr-blue-hover);
 }
 
 .blue-button:active {
-	background-color: var(--clr-blue-low);
+	background-color: var(--clr-blue);
 }
 
 .orange-button {
-	font-size: 3rem;
-	background-color: var(--clr-orange);
-	color: var(--clr-white);
+	font-size: 2rem;
+	background-color: var(--clr-green);
+	/* color: var(--clr-white); */
 }
 
 .orange-button:hover {
-	background-color: var(--clr-orange-high);
+	background-color: var(--clr-green-hover);
 }
 
 .orange-button:active {
-	background-color: var(--clr-orange-low);
+	background-color: var(--clr-green);
 }
 
 .red-button {
-	font-size: 2rem;
+	/* font-size: 2rem; */
 	background-color: var(--clr-red);
 	color: var(--clr-white);
 }
 
 .red-button:hover {
-	background-color: var(--clr-red-high);
+	background-color: var(--clr-red-hover);
 }
 
 .red-button:active {
-	background-color: var(--clr-red-low);
+	background-color: var(--clr-red);
 }
 
 .display {
@@ -235,7 +231,7 @@ hr {
 }
 
 .total {
-	color: var(--clr-orange);
+	color: var(--clr-green);
 }
 
 footer {
