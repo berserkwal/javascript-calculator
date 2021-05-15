@@ -176,7 +176,7 @@ body {
 .red-button {
 	/* font-size: 2rem; */
 	background-color: var(--clr-red);
-	color: var(--clr-white);
+	color: var(--clr-neutral-dark);
 }
 
 .red-button:hover {
@@ -195,7 +195,7 @@ body {
 	max-width: 360px;
 	min-height: 100px;
 	word-wrap: break-word;
-	color: var(--clr-neutral-light);
+	color: var(--clr-white);
 	/* display: grid; */
 	align-items: center;
 	grid-template: 1fr / auto 1fr;
@@ -205,6 +205,7 @@ body {
 
 hr {
 	align-self: stretch;
+	background-color: var(--clr-white);
 }
 
 .equation {
@@ -221,13 +222,14 @@ hr {
 
 .current {
 	text-align: right;
-	font-size: 3rem;
+	font-size: 2.5rem;
 	text-transform: uppercase;
 	line-height: 48px;
 }
 
 .over-limit {
 	color: var(--clr-red);
+	font-size: 2rem;
 }
 
 .total {
@@ -246,7 +248,11 @@ footer {
 }
 
 footer a {
-	color: var(--clr-red);
+	padding: 0.25rem;
+	margin-left: -0.25rem;
+	display: inline-block;
+	background-color: var(--clr-red);
+	color: var(--clr-neutral-dark);
 	text-decoration: none;
 }
 
