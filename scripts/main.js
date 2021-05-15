@@ -169,34 +169,34 @@ window.addEventListener("keydown", (e) => {
 	// console.log(e.key);
 	switch (e.key) {
 		case "1":
-			pressedOne();
+			pressedNumber(1);
 			break;
 		case "2":
-			pressedTwo();
+			pressedNumber(2);
 			break;
 		case "3":
-			pressedThree();
+			pressedNumber(3);
 			break;
 		case "4":
-			pressedFour();
+			pressedNumber(4);
 			break;
 		case "5":
-			pressedFive();
+			pressedNumber(5);
 			break;
 		case "6":
-			pressedSix();
+			pressedNumber(6);
 			break;
 		case "7":
-			pressedSeven();
+			pressedNumber(7);
 			break;
 		case "8":
-			pressedEight();
+			pressedNumber(8);
 			break;
 		case "9":
-			pressedNine();
+			pressedNumber(9);
 			break;
 		case "0":
-			pressedZero();
+			pressedNumber(0);
 			break;
 		case ".":
 			pressedDecimal();
