@@ -15,6 +15,7 @@ const divideKey = document.querySelector("#button-div");
 const addKey = document.querySelector("#button-add");
 const subtractKey = document.querySelector("#button-sub");
 
+const allClearKey = document.querySelector("#button-allclear");
 const clearKey = document.querySelector("#button-clear");
 const equalsKey = document.querySelector("#button-equals");
 
@@ -328,6 +329,7 @@ subtractKey.addEventListener("click", pressedSubtract);
 multiplyKey.addEventListener("click", pressedMultiply);
 divideKey.addEventListener("click", pressedDivide);
 
-clearKey.addEventListener("click", clear);
+clearKey.addEventListener("click", backspace);
+allClearKey.addEventListener("click", clear);
 
 equalsKey.addEventListener("click", equals);
