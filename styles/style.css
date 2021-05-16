@@ -45,6 +45,8 @@ body {
 	max-width: 360px;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	gap: 1.5rem;
 	border-radius: var(--border-radius);
 	box-shadow: var(--b-shadow);
@@ -53,7 +55,7 @@ body {
 .buttons {
 	display: grid;
 	gap: 1rem;
-	width: 100%;
+	width: max-content;
 	/* max-width: 360px; */
 	grid-template: repeat(4, 1fr) / repeat(5, 1fr);
 	grid-template-areas:
@@ -70,7 +72,9 @@ body {
 	align-items: center;
 	justify-content: center;
 	font-size: 1.5rem;
-	padding: 10px 15px;
+	height: 49px;
+	width: 49px;
+	/* padding: 10px 15px; */
 	text-align: center;
 	background-color: var(--clr-white);
 	box-shadow: var(--b-shadow);
@@ -175,6 +179,7 @@ body {
 }
 
 .orange-button {
+	height: unset;
 	font-size: 2rem;
 	background-color: var(--clr-green);
 	/* color: var(--clr-white); */
@@ -262,7 +267,7 @@ footer {
 	text-align: center;
 	padding: 10px;
 	background-color: var(--clr-neutral-light);
-	font-size: 1.2rem;
+	font-size: 0.9rem;
 	color: var(--clr-neutral-dark);
 }
 
@@ -285,7 +290,7 @@ footer a:hover {
 		gap: 1rem;
 	}
 	.buttons {
-		gap: 0.5rem;
+		gap: 1rem;
 	}
 	.over-limit {
 		font-size: 2.5rem;
