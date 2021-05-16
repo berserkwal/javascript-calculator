@@ -223,6 +223,9 @@ function equals() {
 }
 
 function backspace() {
+	if (isTotal) {
+		clear();
+	}
 	if (currentDisplay.innerHTML !== "0") {
 		currentDisplay.innerText = currentDisplay.innerText.slice(
 			0,
