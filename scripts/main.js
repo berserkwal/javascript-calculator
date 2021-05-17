@@ -23,8 +23,7 @@ const currentDisplay = document.querySelector(".current");
 const equationDisplay = document.querySelector(".equation");
 const totalDisplay = document.querySelector(".total");
 
-let viewportHeight = window.innerHeight * 0.01;
-document.documentElement.style.setProperty("--vh", `${viewportHeight}px`);
+vHSet();
 
 let equation = [];
 const operatorCheck = ["+", "-", "*", "/"];
@@ -236,6 +235,11 @@ function backspace() {
 	if (currentDisplay.innerText.length === 0) currentDisplay.innerText = "0";
 }
 
+function vHSet() {
+	const viewportHeight = window.innerHeight * 0.01;
+	document.documentElement.style.setProperty("--vh", `${viewportHeight}px`);
+}
+
 window.addEventListener("keydown", (e) => {
 	// console.log(e.key);
 	switch (e.key) {
@@ -307,10 +311,7 @@ window.addEventListener("keydown", (e) => {
 	}
 });
 
-window.addEventListener("resize", () => {
-	viewportHeight = window.innerHeight * 0.01;
-	document.documentElement.style.setProperty("--vh", `${viewportHeight}px`);
-});
+window.addEventListener("resize", vHSet);
 
 numberZero.addEventListener("click", () => pressedNumber(0));
 numberOne.addEventListener("click", () => pressedNumber(1));
