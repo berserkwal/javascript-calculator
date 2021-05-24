@@ -214,7 +214,6 @@ function equals() {
 	}
 	if (equation.length % 2 === 0) equation.pop();
 	let equationString = equation.join("");
-	console.log(equationString);
 	solution = parseFloat(eval(equationString).toFixed(6));
 	currentDisplay.innerText = solution;
 	isTotal = true;
@@ -241,7 +240,6 @@ function vHSet() {
 }
 
 window.addEventListener("keydown", (e) => {
-	// console.log(e.key);
 	switch (e.key) {
 		case "1":
 			pressedNumber(1);
