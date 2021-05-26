@@ -16,12 +16,8 @@ let isTotalled = false;
 let total = null;
 
 function appendToScreen(num = 0) {
-	if (
-		mainDisplay.innerText === "0" ||
-		Number.isNaN(Number(mainDisplay.innerText)) ||
-		operatorAdded ||
-		isTotalled
-	) {
+	if (Number.isNaN(Number(mainDisplay.innerText))) return;
+	if (mainDisplay.innerText === "0" || operatorAdded || isTotalled) {
 		mainDisplay.classList.remove("total");
 		mainDisplay.innerText = num;
 		operatorAdded = false;
@@ -168,7 +164,7 @@ function divide() {
 }
 
 function preNumeric() {
-	mainDisplay.classList.remove("error");
+	// mainDisplay.classList.remove("error");
 	operatorButtons.forEach((depressedButton) =>
 		depressedButton.classList.remove("depressed")
 	);
