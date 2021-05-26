@@ -1,334 +1,314 @@
-const numberZero = document.querySelector("#button-0");
-const numberOne = document.querySelector("#button-1");
-const numberTwo = document.querySelector("#button-2");
-const numberThree = document.querySelector("#button-3");
-const numberFour = document.querySelector("#button-4");
-const numberFive = document.querySelector("#button-5");
-const numberSix = document.querySelector("#button-6");
-const numberSeven = document.querySelector("#button-7");
-const numberEight = document.querySelector("#button-8");
-const numberNine = document.querySelector("#button-9");
-const decimalKey = document.querySelector("#button-decimal");
+const numericButtons = document.querySelectorAll("[number-button]");
+const operatorButtons = document.querySelectorAll("[operator-button]");
+const decimalButton = document.querySelector("#button-decimal");
+const deleteButton = document.querySelector("#button-clear");
+const clearAllButton = document.querySelector("#button-allclear");
+const mainDisplay = document.querySelector(".current");
+const equalButton = document.querySelector("#button-equals");
+const reverseButton = document.querySelector("#button-reverse-sign");
 
-const multiplyKey = document.querySelector("#button-mul");
-const divideKey = document.querySelector("#button-div");
-const addKey = document.querySelector("#button-add");
-const subtractKey = document.querySelector("#button-sub");
+let precedingOperand = null;
+let currentOperand = null;
+let operator = null;
+let operatorAdded = false;
+let decimalAdded = false;
+let isTotalled = false;
+let total = null;
 
-const allClearKey = document.querySelector("#button-allclear");
-const clearKey = document.querySelector("#button-clear");
-const equalsKey = document.querySelector("#button-equals");
-
-const currentDisplay = document.querySelector(".current");
-const equationDisplay = document.querySelector(".equation");
-const totalDisplay = document.querySelector(".total");
-
-vHSet();
-
-let equation = [];
-const operatorCheck = ["+", "-", "*", "/"];
-let solution = 0;
-let hasOperator = false;
-let hasDecimal = false;
-let isTotal = false;
-
-function pressedNumber(num) {
-	hasOperator = false;
-	if (isTotal) {
-		clear();
-	}
-	{
-		if (currentDisplay.innerHTML.length <= 9) {
-			if (
-				currentDisplay.innerText === "0" ||
-				operatorCheck.includes(currentDisplay.innerText)
-			) {
-				currentDisplay.innerText = num;
-			} else currentDisplay.innerText += num;
-		} else {
-			currentDisplay.innerText = "Over Limit";
-			currentDisplay.classList.add("over-limit");
-			setTimeout(() => {
-				currentDisplay.innerText = 0;
-				currentDisplay.classList.remove("over-limit");
-			}, 1000);
-		}
-	}
-}
-
-function pressedDecimal() {
-	if (isTotal) {
-		clear();
-	}
-	{
-		if (currentDisplay.innerHTML.length <= 9) {
-			if (
-				currentDisplay.innerText === "0" ||
-				operatorCheck.includes(currentDisplay.innerText)
-			) {
-				currentDisplay.innerText = "0.";
-			} else if (hasDecimal)
-				currentDisplay.innerText = currentDisplay.innerText;
-			else currentDisplay.innerText += ".";
-			hasDecimal = true;
-		} else {
-			currentDisplay.innerText = "Over Digital Limit";
-			currentDisplay.classList.add("over-limit");
-			setTimeout(() => {
-				currentDisplay.innerText = 0;
-				currentDisplay.classList.remove("over-limit");
-			}, 1500);
-		}
-	}
-}
-
-function clear() {
-	currentDisplay.innerText = 0;
-	currentDisplay.classList.remove("total");
-	equationDisplay.innerText = 0;
-	equation.splice(0, equation.length);
-	isTotal = false;
-	hasDecimal = false;
-	// solution = 0;
-}
-
-function pressedAdd() {
-	if (isTotal) {
-		clear();
-		equation.push(solution);
-		equation.push("+");
-		currentDisplay.innerText = "+";
-	}
-	equationDisplay.innerText = "0";
-	const value = currentDisplay.innerText;
-	if (value !== "0") {
-		if (
-			hasOperator &&
-			equation.length > 1 &&
-			equation[equation.length - 1] !== "+"
-		) {
-			equation.pop();
-			equation.push("+");
-		} else if (!operatorCheck.includes(value)) {
-			equation.push(value);
-			equation.push("+");
-		}
-	}
-	currentDisplay.innerText = "+";
-	equationDisplay.innerText = equation.join("");
-	if (equationDisplay.innerText.length === 0) equationDisplay.innerText = 0;
-
-	hasDecimal = false;
-	if (equation.length % 2 === 0) hasOperator = true;
-}
-
-function pressedSubtract() {
-	if (isTotal) {
-		clear();
-		equation.push(solution);
-		equation.push("-");
-		currentDisplay.innerText = "-";
-	}
-	equationDisplay.innerText = "0";
-	const value = currentDisplay.innerText;
-	if (value !== "0") {
-		if (
-			hasOperator &&
-			equation.length > 1 &&
-			equation[equation.length - 1] !== "-"
-		) {
-			equation.pop();
-			equation.push("-");
-		} else if (!operatorCheck.includes(value)) {
-			equation.push(value);
-			equation.push("-");
-		}
-	}
-	currentDisplay.innerText = "-";
-	equationDisplay.innerText = equation.join("");
-	if (equationDisplay.innerText.length === 0) equationDisplay.innerText = 0;
-
-	hasDecimal = false;
-	if (equation.length % 2 === 0) hasOperator = true;
-}
-
-function pressedMultiply() {
-	if (isTotal) {
-		clear();
-		equation.push(solution);
-		equation.push("*");
-		currentDisplay.innerText = "*";
-	}
-	equationDisplay.innerText = "0";
-	const value = currentDisplay.innerText;
+function appendToScreen(num = 0) {
 	if (
-		hasOperator &&
-		equation[equation.length - 1] !== "*" &&
-		equation.length > 1
+		mainDisplay.innerText === "0" ||
+		Number.isNaN(Number(mainDisplay.innerText)) ||
+		operatorAdded ||
+		isTotalled
 	) {
-		equation.pop();
-		equation.push("*");
-	} else if (!operatorCheck.includes(value)) {
-		equation.push(value);
-		equation.push("*");
+		mainDisplay.classList.remove("total");
+		mainDisplay.innerText = num;
+		operatorAdded = false;
+		isTotalled = false;
+	} else mainDisplay.innerText += num;
+
+	if (mainDisplay.innerText.length >= 10) {
+		mainDisplay.innerText = "O/L";
+		mainDisplay.classList.add("error");
 	}
-	currentDisplay.innerText = "*";
-	equationDisplay.innerText = equation.join("");
-	if (equationDisplay.innerText.length === 0) equationDisplay.innerText = 0;
-	hasDecimal = false;
-	if (equation.length % 2 === 0) hasOperator = true;
 }
 
-function pressedDivide() {
-	if (isTotal) {
-		clear();
-		equation.push(solution);
-		equation.push("/");
-		currentDisplay.innerText = "/";
-	}
-	equationDisplay.innerText = "0";
-	const value = currentDisplay.innerText;
-	if (
-		hasOperator &&
-		equation[equation.length - 1] !== "/" &&
-		equation.length > 1
-	) {
-		equation.pop();
-		equation.push("/");
-	} else if (!operatorCheck.includes(value)) {
-		equation.push(value);
-		equation.push("/");
-	}
-	currentDisplay.innerText = "/";
-	equationDisplay.innerText = equation.join("");
-	if (equationDisplay.innerText.length === 0) equationDisplay.innerText = 0;
-	hasDecimal = false;
-	if (equation.length % 2 === 0) hasOperator = true;
+function clearAll() {
+	mainDisplay.classList.remove("error");
+	operatorButtons.forEach((depressedButton) =>
+		depressedButton.classList.remove("depressed")
+	);
+	mainDisplay.innerText = 0;
+	mainDisplay.classList.remove("total");
+	mainDisplay.classList.remove("error");
+	precedingOperand = null;
+	currentOperand = null;
+	operator = null;
+	operatorAdded = false;
+	isTotalled = false;
+	total = null;
 }
 
-function equals() {
-	if (!operatorCheck.includes(currentDisplay.innerText)) {
-		if (currentDisplay.innerText[currentDisplay.innerText.length - 1] === ".")
-			currentDisplay.innerText += "0";
-		equation.push(currentDisplay.innerText);
+function deleteOnce() {
+	if (mainDisplay.innerText === "O/L" || mainDisplay.innerText === "D/0") {
+		mainDisplay.classList.remove("error");
+		mainDisplay.innerText = 0;
+		return;
 	}
-	if (equation.length % 2 === 0) equation.pop();
-	let equationString = equation.join("");
-	solution = parseFloat(eval(equationString).toFixed(6));
-	currentDisplay.innerText = solution;
-	isTotal = true;
-	currentDisplay.classList.add("total");
-	equationDisplay.innerText = equationString + " =";
-}
-
-function backspace() {
-	if (isTotal) {
-		clear();
+	if (isTotalled) {
+		clearAll();
+		return;
 	}
-	if (currentDisplay.innerHTML !== "0") {
-		currentDisplay.innerText = currentDisplay.innerText.slice(
+	mainDisplay.classList.remove("total");
+	if (mainDisplay.innerText.length > 1) {
+		mainDisplay.innerText = mainDisplay.innerText.slice(
 			0,
-			currentDisplay.innerText.length - 1
+			mainDisplay.innerText.length - 1
 		);
-	}
-	if (currentDisplay.innerText.length === 0) currentDisplay.innerText = "0";
+	} else mainDisplay.innerText = 0;
 }
 
-function vHSet() {
-	const viewportHeight = window.innerHeight * 0.01;
-	document.documentElement.style.setProperty("--vh", `${viewportHeight}px`);
+function operation(opr8r) {
+	if (isTotalled) {
+		let temp = total;
+		clearAll();
+		precedingOperand = temp;
+		mainDisplay.innerText = temp;
+		operator = opr8r;
+		isTotalled = false;
+		operatorAdded = true;
+		return;
+	}
+
+	if (!precedingOperand && !operator) {
+		precedingOperand = Number(mainDisplay.innerText);
+		operator = opr8r;
+	} else {
+		if (!currentOperand) {
+			if (operatorAdded) {
+				operator = opr8r;
+			} else {
+				currentOperand = Number(mainDisplay.innerText);
+				evaluate();
+				operator = opr8r;
+			}
+		} else {
+			evaluate();
+			currentOperand = Number(mainDisplay.innerText);
+			operator = opr8r;
+		}
+	}
+	operatorAdded = true;
 }
+
+function evaluate() {
+	switch (operator) {
+		case "+":
+			total = add();
+			break;
+		case "-":
+			total = subtract();
+			break;
+		case "*":
+			total = multiply();
+			break;
+		case "/":
+			total = divide();
+			break;
+	}
+
+	total = Math.round(total * 100000) / 100000;
+	precedingOperand = total;
+	mainDisplay.innerText = total;
+	currentOperand = null;
+	operatorAdded = false;
+}
+
+function equate() {
+	if (mainDisplay.innerText === "0" && operator === "/") {
+		mainDisplay.innerText = "D/0";
+		mainDisplay.classList.add("error");
+		return;
+	}
+
+	operatorButtons.forEach((depressedButton) =>
+		depressedButton.classList.remove("depressed")
+	);
+	if (!precedingOperand) {
+		return;
+	}
+	mainDisplay.classList.add("total");
+
+	if (!currentOperand) {
+		if (operatorAdded) {
+			mainDisplay.innerText = precedingOperand;
+		} else {
+			currentOperand = Number(mainDisplay.innerText);
+			evaluate();
+		}
+	} else {
+		evaluate();
+	}
+	isTotalled = true;
+	operator = null;
+}
+
+function add() {
+	return precedingOperand + currentOperand;
+}
+function multiply() {
+	return precedingOperand * currentOperand;
+}
+function subtract() {
+	return precedingOperand - currentOperand;
+}
+function divide() {
+	return precedingOperand / currentOperand;
+}
+
+function preNumeric() {
+	mainDisplay.classList.remove("error");
+	operatorButtons.forEach((depressedButton) =>
+		depressedButton.classList.remove("depressed")
+	);
+	if (isTotalled) {
+		clearAll();
+		isTotalled = false;
+	}
+}
+
+function preOperator() {
+	operatorButtons.forEach((depressedButton) =>
+		depressedButton.classList.remove("depressed")
+	);
+}
+
+function insertDecimal() {
+	if (!mainDisplay.innerHTML.includes(".")) {
+		preNumeric();
+		if (mainDisplay.innerText === "0") appendToScreen("0.");
+		else appendToScreen(".");
+	}
+}
+
+function reverseSign() {
+	mainDisplay.innerText = -Number(mainDisplay.innerText);
+}
+
+numericButtons.forEach((button) => {
+	button.addEventListener("click", () => {
+		preNumeric();
+		appendToScreen(button.getAttribute("number-button"));
+	});
+});
+
+operatorButtons.forEach((button) => {
+	button.addEventListener("click", () => {
+		preOperator();
+		button.classList.add("depressed");
+		operation(button.getAttribute("operator-button"));
+	});
+});
+
+decimalButton.addEventListener("click", insertDecimal);
+
+clearAllButton.addEventListener("click", clearAll);
+deleteButton.addEventListener("click", () => deleteOnce());
+equalButton.addEventListener("click", equate);
+reverseButton.addEventListener("click", reverseSign);
 
 window.addEventListener("keydown", (e) => {
 	switch (e.key) {
+		case "0":
+			preNumeric();
+			appendToScreen("0");
+			break;
 		case "1":
-			pressedNumber(1);
+			preNumeric();
+			appendToScreen("1");
 			break;
 		case "2":
-			pressedNumber(2);
+			preNumeric();
+			appendToScreen("2");
 			break;
 		case "3":
-			pressedNumber(3);
+			preNumeric();
+			appendToScreen("3");
 			break;
 		case "4":
-			pressedNumber(4);
+			preNumeric();
+			appendToScreen("4");
 			break;
 		case "5":
-			pressedNumber(5);
+			preNumeric();
+			appendToScreen("5");
 			break;
 		case "6":
-			pressedNumber(6);
+			preNumeric();
+			appendToScreen("6");
 			break;
 		case "7":
-			pressedNumber(7);
+			preNumeric();
+			appendToScreen("7");
 			break;
 		case "8":
-			pressedNumber(8);
+			preNumeric();
+			appendToScreen("8");
 			break;
 		case "9":
-			pressedNumber(9);
-			break;
-		case "0":
-			pressedNumber(0);
+			preNumeric();
+			appendToScreen("9");
 			break;
 		case ".":
-			pressedDecimal();
-			break;
-		case "Delete":
-		case "c":
-		case "C":
-			clear();
+			insertDecimal();
 			break;
 		case "+":
-		case "A":
 		case "a":
-			pressedAdd();
+		case "A":
+			preOperator();
+			document
+				.querySelector(`[operator-button="+"]`)
+				.classList.add("depressed");
+			operation("+");
 			break;
 		case "-":
-		case "S":
 		case "s":
-			pressedSubtract();
+		case "S":
+			preOperator();
+			document
+				.querySelector(`[operator-button="-"]`)
+				.classList.add("depressed");
+			operation("-");
 			break;
 		case "*":
-		case "M":
 		case "m":
-			pressedMultiply();
+		case "M":
+			preOperator();
+			document
+				.querySelector(`[operator-button="*"]`)
+				.classList.add("depressed");
+			operation("*");
 			break;
 		case "/":
-		case "D":
 		case "d":
-			pressedDivide();
+		case "D":
+			preOperator();
+			document
+				.querySelector(`[operator-button="/"]`)
+				.classList.add("depressed");
+			operation("/");
 			break;
-		case "=":
 		case "Enter":
-			equals();
+		case "=":
+			equate();
 			break;
 		case "Backspace":
-			backspace();
+		case "Escape":
+			deleteOnce();
+			break;
+		case "Delete":
+			clearAll();
 			break;
 	}
 });
-
-window.addEventListener("resize", vHSet);
-
-numberZero.addEventListener("click", () => pressedNumber(0));
-numberOne.addEventListener("click", () => pressedNumber(1));
-numberTwo.addEventListener("click", () => pressedNumber(2));
-numberThree.addEventListener("click", () => pressedNumber(3));
-numberFour.addEventListener("click", () => pressedNumber(4));
-numberFive.addEventListener("click", () => pressedNumber(5));
-numberSix.addEventListener("click", () => pressedNumber(6));
-numberSeven.addEventListener("click", () => pressedNumber(7));
-numberEight.addEventListener("click", () => pressedNumber(8));
-numberNine.addEventListener("click", () => pressedNumber(9));
-decimalKey.addEventListener("click", pressedDecimal);
-
-addKey.addEventListener("click", pressedAdd);
-subtractKey.addEventListener("click", pressedSubtract);
-multiplyKey.addEventListener("click", pressedMultiply);
-divideKey.addEventListener("click", pressedDivide);
-
-clearKey.addEventListener("click", backspace);
-allClearKey.addEventListener("click", clear);
-
-equalsKey.addEventListener("click", equals);

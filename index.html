@@ -1,60 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, user-scalable=no"
-		/>
-		<link rel="stylesheet" href="./styles/style.css" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap"
-			rel="stylesheet"
-		/>
-		<script
-			src="https://kit.fontawesome.com/3a1e4c9014.js"
-			crossorigin="anonymous"
-		></script>
-		<title>Calculator</title>
-	</head>
-	<body>
-		<div class="calc-frame">
-			<div class="display">
-				<div class="equation">0</div>
-				<hr />
-				<div class="current">0</div>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="./styles/style.css" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap"
+		rel="stylesheet" />
+	<script
+		src="https://kit.fontawesome.com/3a1e4c9014.js"
+		crossorigin="anonymous"></script>
+	<title>Calculator</title>
+</head>
+
+<body>
+	<div class="calc-frame">
+		<div class="current">0
+			<!-- <div class="equation">0</div> -->
+			<!-- <hr /> -->
+			<!-- <div class="current">0</div> -->
+		</div>
+		<div class="buttons">
+			<div class="button" id="button-0" number-button="0">0</div>
+			<div class="button" id="button-1" number-button="1">1</div>
+			<div class="button" id="button-2" number-button="2">2</div>
+			<div class="button" id="button-3" number-button="3">3</div>
+			<div class="button" id="button-4" number-button="4">4</div>
+			<div class="button" id="button-5" number-button="5">5</div>
+			<div class="button" id="button-6" number-button="6">6</div>
+			<div class="button" id="button-7" number-button="7">7</div>
+			<div class="button" id="button-8" number-button="8">8</div>
+			<div class="button" id="button-9" number-button="9">9</div>
+			<div class="button" id="button-decimal">.</div>
+			<div class="button" id="button-reverse-sign">
+				±</div>
+			<div class="button blue-button" operator-button="-" id="button-sub">
+				-</div>
+			<div class="button blue-button" operator-button="/" id="button-div">
+				÷</div>
+			<div class="button blue-button" operator-button="*" id="button-mul">
+				×</div>
+			<div class="button blue-button" operator-button="+" id="button-add">
+				+</div>
+			<div class="button red-button" id="button-clear">
+				<i class="fas fa-backspace"></i>
 			</div>
-			<div class="buttons">
-				<div class="button" id="button-0">0</div>
-				<div class="button" id="button-1">1</div>
-				<div class="button" id="button-2">2</div>
-				<div class="button" id="button-3">3</div>
-				<div class="button" id="button-4">4</div>
-				<div class="button" id="button-5">5</div>
-				<div class="button" id="button-6">6</div>
-				<div class="button" id="button-7">7</div>
-				<div class="button" id="button-8">8</div>
-				<div class="button" id="button-9">9</div>
-				<div class="button" id="button-decimal">.</div>
-				<div class="button func-button blue-button" id="button-sub">-</div>
-				<div class="button func-button blue-button" id="button-div">÷</div>
-				<div class="button func-button blue-button" id="button-mul">×</div>
-				<div class="button func-button blue-button" id="button-add">+</div>
-				<div class="button func-button red-button" id="button-clear">
-					<i class="fas fa-backspace"></i>
-				</div>
-				<div class="button func-button red-button" id="button-allclear">
-					<i class="far fa-trash-alt"></i>
-				</div>
-				<div class="button func-button orange-button" id="button-equals">=</div>
+			<div class="button red-button" id="button-allclear">
+				<i class="far fa-trash-alt"></i>
+			</div>
+			<div class="button green-button" id="button-equals">=
 			</div>
 		</div>
-		<footer>
-			Designed an developed by
-			<a href="https://github.com/berserkwal">berserkwal</a>
-		</footer>
-		<script src="./scripts/main.js"></script>
-	</body>
+	</div>
+	<footer>
+		Designed an developed by
+		<a href="https://github.com/berserkwal">berserkwal</a>
+	</footer>
+	<script src="./scripts/main.js"></script>
+</body>
+
 </html>
